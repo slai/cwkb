@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\sam\Desktop\cwkb" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Scripts/Hash.js" publishTime="12/10/2010 19:11:29" />
+    <file relUrl="Templates/ticket.partial.html" publishTime="12/10/2010 19:18:20" />
+    <file relUrl="Global.asax" publishTime="12/07/2010 21:11:33" />
+    <file relUrl="Templates/results.partial.html" publishTime="12/10/2010 23:31:26" />
+    <file relUrl="bin/Nancy.pdb" publishTime="12/11/2010 17:06:48" />
+    <file relUrl="bin/FSharp.PowerPack.dll" publishTime="03/02/2010 00:57:42" />
+    <file relUrl="Templates/debug.html" publishTime="12/11/2010 01:14:04" />
+    <file relUrl="bin/Nancy.dll" publishTime="12/11/2010 17:06:49" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="12/07/2010 21:11:33" />
+    <file relUrl="Scripts/jquery.hash.js" publishTime="12/10/2010 19:11:21" />
+    <file relUrl="Templates/search.partial.html" publishTime="12/11/2010 01:00:24" />
+    <file relUrl="bin/cwkb.pdb" publishTime="12/11/2010 18:40:38" />
+    <file relUrl="Images/collapse-button.png" publishTime="12/09/2010 22:59:20" />
+    <file relUrl="Styles/main.css" publishTime="12/11/2010 01:01:18" />
+    <file relUrl="Templates/kbarticle.partial.html" publishTime="12/10/2010 23:37:49" />
+    <file relUrl="Images/project_ticket.gif" publishTime="12/10/2010 13:26:09" />
+    <file relUrl="Templates/ticketheader.include.html" publishTime="12/10/2010 23:12:03" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="12/07/2010 21:11:33" />
+    <file relUrl="Templates/404.partial.html" publishTime="12/09/2010 20:03:46" />
+    <file relUrl="bin/NDjangoFilters.NDjangoExtension40.dll" publishTime="08/18/2010 17:35:26" />
+    <file relUrl="Images/kb_article.gif" publishTime="12/10/2010 13:26:09" />
+    <file relUrl="Images/expand-button.png" publishTime="12/09/2010 22:59:31" />
+    <file relUrl="Templates/tablestatus.include.html" publishTime="12/11/2010 00:37:27" />
+    <file relUrl="bin/FSharp.PowerPack.Compatibility.dll" publishTime="03/02/2010 00:58:14" />
+    <file relUrl="Templates/timeentry.include.html" publishTime="12/10/2010 19:18:35" />
+    <file relUrl="Templates/timeentry.partial.html" publishTime="12/10/2010 18:44:51" />
+    <file relUrl="Images/loading.gif" publishTime="12/08/2010 17:09:26" />
+    <file relUrl="bin/cwkb.dll" publishTime="12/11/2010 18:40:38" />
+    <file relUrl="Web.config" publishTime="12/11/2010 18:10:28" />
+    <file relUrl="bin/NDjango.Core40.dll" publishTime="08/18/2010 17:35:26" />
+    <file relUrl="Images/time_entry.gif" publishTime="12/10/2010 13:26:09" />
+    <file relUrl="Templates/index.html" publishTime="12/11/2010 00:27:38" />
+    <file relUrl="Scripts/main.js" publishTime="12/11/2010 01:22:02" />
+    <file relUrl="Styles/debug.css" publishTime="12/11/2010 00:56:20" />
+    <file relUrl="Images/service_ticket.gif" publishTime="12/10/2010 13:26:08" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="12/07/2010 21:11:33" />
+  </publishProfile>
+</publishData>

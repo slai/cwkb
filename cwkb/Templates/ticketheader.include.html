@@ -1,0 +1,16 @@
+﻿<h3>{{ Ticket.CompanyName }}</h3>
+{% ifequal Ticket.GetType.ToString "cwkb.ProjectTicket" %}
+<h3>{{ Ticket.ProjectName }}</h3>
+{% endifequal %}
+<h1><strong>#{{ Ticket.Id }}</strong>: {{ Ticket.Name }}</h1>
+<h2>
+    Opened on <strong>{{ Ticket.StartTime.ToString }}</strong>, 
+    {% if Ticket.ClosedTime %}
+    closed <strong>{{ Ticket.ClosedTime.ToString }}</strong> as <strong>{{ Ticket.Status }}</strong>
+    {% else %}
+    currently <strong>{{ Ticket.Status }}</strong>
+    {% endif %}
+</h2>
+<h2>
+    Last updated on <strong>{{ Ticket.LastUpdated.ToString }}</strong> by <strong>{{ Ticket.LastUpdatedBy }}</strong>
+</h2>

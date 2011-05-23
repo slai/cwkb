@@ -1,0 +1,331 @@
+﻿body 
+{
+    margin: 0;
+    font-family: Arial, Sans-Serif;
+}
+
+#header
+{
+    position: absolute;
+    height: 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 7px;
+}
+
+#header h1 
+{
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.header-cw
+{
+    color: #999999;
+}
+
+#hide-rhs
+{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    display: none;
+    font-size: 0.8em;
+    background-color: #333333;
+    padding: 0.2em 0.5em;
+}
+
+#hide-rhs a
+{
+    color: #CCCCCC;
+}
+
+#hide-rhs a:hover
+{
+    color: #FFFFFF;
+}
+
+.content-box
+{
+    overflow: auto;
+    /* otherwise div appears to not be finished, but not scrollable either */
+    padding-bottom: 5px;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+}
+
+#content-lhs
+{
+    position: absolute;
+    top: 54px;
+    left: 0.8em;
+    right: 0.8em;
+    bottom: 0.8em;
+}
+
+#content-rhs
+{
+    position: absolute;
+    top: 54px;
+    left: 100%;
+    right: 0.8em;
+    bottom: 0.8em;
+    display: none;
+}
+
+.expand-button
+{
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+#search-big-form
+{
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+#search-big-form div
+{
+    text-align: center;
+}
+
+#search-big-form label
+{
+    display: none;
+}
+
+#search-big-form input[type="text"] 
+{
+    font-size: 1.5em;
+    width: 100%;
+}
+
+#search-big-form input[type="submit"] 
+{
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 0.4em;
+}
+
+.search-tips 
+{
+    text-align: center;
+    color: #999999;
+}
+
+.kb-last-update
+{
+    margin-top: 3em;
+}
+
+.debug-link
+{
+    margin-top: 3em;
+}
+
+.debug-link a
+{
+    color: #999999;
+}
+
+.search-form
+{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.search-form label
+{
+    display: none;
+}
+
+.search-form div 
+{ 
+    text-align: center; 
+}
+
+.search-form input[type="text"] 
+{
+    font-size: 1.2em;
+    width: 70%;
+}
+
+.search-form input[type="submit"] 
+{
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.ticket
+{
+    border: #999999 1px solid;
+    padding: 0.7em;
+    margin-bottom: 0.5em;
+}
+
+.ticket h1
+{
+    font-size: 1.3em;
+    margin: 0;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    border-bottom: 1px dotted #CCCCCC;
+    padding-bottom: 0.4em;
+}
+
+.ticket h2
+{
+    font-size: 0.7em;
+    margin: 0;
+    margin-bottom: 0.2em;
+    color: #999999;
+    font-weight: normal;
+}
+
+.ticket h3
+{
+    font-size: 0.8em;
+    margin: 0;
+    color: #999999;
+}
+
+.ticket-notes
+{
+    font-size: 0.9em;
+}
+
+.ticket-note
+{
+    border-left: 1px solid #CCCCCC;
+    padding-left: 0.8em;
+}
+
+.ticket-note p:last-child
+{
+    padding-bottom: 0.2em;
+    margin-bottom: 0;
+}
+
+.ticket-notes h6
+{
+    color: #999999;
+    border-top: 1px solid #CCCCCC;
+    margin: 0;
+    font-weight: normal;
+    text-align: right;
+}
+
+.view-in-context
+{
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.8em;
+}
+
+.view-in-context a
+{
+    color: #CCCCCC;
+}
+
+.view-in-context a:hover
+{
+    color: #333333;
+}
+
+.timeentry
+{
+    border: #333333 1px solid;
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+.timeentry h1
+{
+    font-size: 1.3em;
+    font-weight: normal;
+    background-color: #F2F2F2;
+    padding: 0.3em 0.5em;
+    margin: 0;
+}
+
+.timeentry-int
+{
+    padding: 0.7em;
+}
+
+.timeentry-int h2
+{
+    font-size: 0.9em;
+    border-bottom: 1px dotted #999999;
+    margin: 0;
+    margin-bottom: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+.results
+{
+    margin: 0.8em 0;
+    padding: 0;
+    list-style-type: none;
+    margin-bottom: 2em;
+}
+
+.results li
+{
+    margin-bottom: 0.8em;
+}
+
+.results-morethanmax
+{
+    background-color: #F2F2F2;
+    border: #999999 solid 1px;
+    padding: 0.2em 0.5em;
+}
+
+.results-error
+{
+    background-color: #F2F2F2;
+    border: red solid 2px;
+    padding: 0.2em 0.5em;
+    margin-top: 1em;
+}
+
+.result img
+{
+    float: left;
+}
+
+.result-int
+{
+    margin-left: 40px; /* for icon and gap */
+    border: #F2F2F2 1px solid;
+}
+
+.result-int h1
+{
+    font-size: 1em;
+    margin: 0;
+    background-color: #F2F2F2;
+    padding: 0.2em 0.5em;
+}
+
+.result-int h1 a
+{
+    text-decoration: none;
+}
+
+.result-excerpt
+{
+    margin: 0;
+    padding: 0.2em 0.5em;
+    font-size: 0.8em;
+}
+
+.highlight
+{
+    background-color: Yellow;
+}

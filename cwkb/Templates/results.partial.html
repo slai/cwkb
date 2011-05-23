@@ -1,0 +1,113 @@
+﻿<form id="search-top-form" class="search-form" method="get" action="/search">
+    <div>
+        <label for="search-top-form-q">Enter some keywords to search for:</label>
+        <input type="text" id="search-top-form-q" name="q" value="{{ Query }}" />
+        <input type="submit" name="submit" value="Search" />
+    </div>
+</form>
+
+{% if QueryError %}
+<div class="results-error">
+    <p>The query you entered is invalid.</p> 
+    <p>Please check your use of search operators. Remember the following are operators - <em>AND</em>, 
+    <em>&</em>, <em>OR</em>, <em>|</em>, <em>NOT</em>, <em>&!</em>, <em>NEAR</em>, <em>FORMSOF</em> and <em>ISABOUT</em>.</p>
+    <p>Also hyphenated words should be enclosed in double quotes, e.g. <em>Desktop-PC</em>.</p>
+</div>
+{% endif %}
+
+{% if Results %}
+{% if MoreThanMax %}
+<p class="results-morethanmax">
+    More than <strong>{{ MaxResults }}</strong> items were found. Only the top <strong>{{ MaxResults }}</strong> 
+    results are displayed. Consider refining your search.
+</p>
+{% else %}
+<p>Found <strong>{{ Results.Count }}</strong> item{% ifnotequal Results.Count 1 %}s{% endifnotequal %}.</p>
+{% endif %}
+<ul class="results">
+{% for r in Results %}
+    {% ifequal r.Item.GetType.ToString "cwkb.ServiceTicket" %}
+    <li>
+        <div class="result">
+            <img src="/Images/service_ticket.gif" alt="Service Ticket" />
+            <div class="result-int">
+                <h1><a href="#" onclick="loadIntoRHS('/ticket/{{ r.Item.Id }}'); return false;">#{{ r.Item.Id }}: {{ r.Item.Name }}</a></h1>
+                {% autoescape off %}
+                <p class="result-excerpt">{{ r.Item.Excerpt|force_escape|highlight:QueryWords }}</p>
+                {% endautoescape %}
+            </div>
+        </div>
+    </li>
+    {% endifequal %}
+    {% ifequal r.Item.GetType.ToString "cwkb.ProjectTicket" %}
+    <li>
+        <div class="result">
+            <img src="/Images/project_ticket.gif" alt="Project Ticket" />
+            <div class="result-int">
+                <h1><a href="#" onclick="loadIntoRHS('/ticket/{{ r.Item.Id }}'); return false;">#{{ r.Item.Id }}: {{ r.Item.Name }}</a></h1>
+                {% autoescape off %}
+                <p class="result-excerpt">{{ r.Item.Excerpt|force_escape|highlight:QueryWords }}</p>
+                {% endautoescape %}
+            </div>
+        </div>
+    </li>
+    {% endifequal %}
+    {% ifequal r.Item.GetType.ToString "cwkb.TimeEntry" %}
+    <li>
+        <div class="result">
+            <img src="/Images/time_entry.gif" alt="Time Entry" />
+            <div class="result-int">
+                <h1><a href="#" onclick="loadIntoRHS('/timeentry/{{ r.Item.Id }}'); return false;">
+                    <strong>{{ r.Item.Member }}</strong> on <strong>{{ r.Item.StartTime.ToShortDateString }}</strong> from <strong>{{ r.Item.StartTime.ToShortTimeString }}</strong>
+                    to <strong>{{ r.Item.EndTime.ToShortTimeString }}</strong>
+                </a></h1>
+                {% autoescape off %}
+                <p class="result-excerpt">{{ r.Item.Excerpt|force_escape|highlight:QueryWords }}</p>
+                {% endautoescape %}
+            </div>
+        </div>
+    </li>
+    {% endifequal %}
+    {% ifequal r.Item.GetType.ToString "cwkb.KBArticle" %}
+    <li>
+        <div class="result">
+            <img src="/Images/kb_article.gif" alt="KB Article" />
+            <div class="result-int">
+                <h1><a href="#" onclick="loadIntoRHS('/kbarticle/{{ r.Item.Id }}'); return false;">{{ r.Item.Summary }}</a></h1>
+                {% autoescape off %}
+                <p class="result-excerpt">{{ r.Item.Excerpt|force_escape|highlight:QueryWords }}</p>
+                {% endautoescape %}
+            </div>
+        </div>
+    </li>
+    {% endifequal %}
+{% endfor %}
+</ul>
+
+<form id="search-bottom-form" class="search-form" method="get" action="/search">
+    <div>
+        <label for="search-bottom-form-q">Enter some keywords to search for:</label>
+        <input type="text" id="search-bottom-form-q" name="q" value="{{ Query }}" />
+        <input type="submit" name="submit" value="Search" />
+    </div>
+</form>
+{% else %}
+<p><strong>No results found.</strong></p>
+{% endif %}
+
+<script type="text/javascript">
+    $("#search-top-form").submit(function () {
+        var form = $("#search-top-form");
+        loadIntoLHS(form.attr("action") + "?" + form.serialize());
+        return false;
+    });
+
+    if (document.getElementById("search-bottom-form"))
+    {
+        $("#search-bottom-form").submit(function () {
+            var form = $("#search-bottom-form");
+            loadIntoLHS(form.attr("action") + "?" + form.serialize());
+            return false;
+        });
+    }
+</script>

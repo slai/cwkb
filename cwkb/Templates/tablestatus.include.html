@@ -1,0 +1,39 @@
+﻿<div class="table">
+    <h2>Table - {{ TableStatus.Table }}</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td class="property-name">Indexing Enabled</td>
+                <td class="property-value">{{ TableStatus.IndexingEnabled }}</td>
+            </tr>
+            <tr>
+                <td class="property-name">Change Tracking Enabled</td>
+                <td class="property-value">{{ TableStatus.ChangeTrackingEnabled }}</td>
+            </tr>
+            <tr>
+                <td class="property-name">Background Update Enabled</td>
+                <td class="property-value">{{ TableStatus.BackgroundUpdateEnabled }}</td>
+            </tr>
+            <tr>
+                <td class="property-name">Docs Processed</td>
+                <td class="property-value">{{ TableStatus.DocsProcessed }}</td>
+            </tr>
+            <tr>
+                <td class="property-name">Item Count</td>
+                <td class="property-value">{{ TableStatus.ItemCount }}</td>
+            </tr>
+            <tr>
+                <td class="property-name">Pending Changes Count</td>
+                <td class="property-value">{{ TableStatus.PendingChangesCount }}</td>
+            </tr>
+            <tr>
+                <td class="property-name">Failed Count</td>
+                <td class="property-value">{{ TableStatus.FailedCount }}</td>
+            </tr>
+            <tr>
+                <td class="property-name">Populate Status</td>
+                <td class="property-value">{{ TableStatus.PopulateStatus.ToString }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

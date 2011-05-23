@@ -1,0 +1,30 @@
+﻿<div class="ticket">
+    {% if KBArticle.Category %}
+    <h3>
+        {{ KBArticle.Category }}
+        {% if KBArticle.SubCategory %}
+        &gt; {{ KBArticle.SubCategory }}
+        {% endif %}
+    </h3>
+    {% endif %}
+    <h1>{{ KBArticle.Summary }}</h1>
+    <h2>
+        Last updated on <strong>{{ KBArticle.LastUpdated.ToString }}</strong> by <strong>{{ KBArticle.LastUpdatedBy }}</strong>
+    </h2>
+    {% if KBArticle.Problem %}
+    <div class="ticket-notes">
+        <h4>Problem</h4>
+        {% autoescape off %}
+        {{ KBArticle.Problem|force_escape|urlize|linebreaks }}
+        {% endautoescape %}
+    </div>
+    {% endif %}
+    {% if KBArticle.Resolution %}
+    <div class="ticket-notes">
+        <h4>Resolution</h4>
+        {% autoescape off %}
+        {{ KBArticle.Resolution|force_escape|urlize|linebreaks }}
+        {% endautoescape %}
+    </div>
+    {% endif %}
+</div>

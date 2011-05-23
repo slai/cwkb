@@ -1,0 +1,5 @@
+*.docstates
+*.suo
+*.exe
+bin/
+obj/

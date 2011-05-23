@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ConnectWise KB Viewer - DEBUG</title>
+    <link rel="Stylesheet" media="all" href="/styles/debug.css" />
+</head>
+<body>
+    <div id="header">
+        <h1><span class="header-cw">cw</span>kb // debug.</h1>
+    </div>
+    <p>
+        Check the <em>last populated</em> date on the full text catalog. This is the date that one of the
+        database tables last updated itself with the index. Items entered or changed after this time will
+        not be reflected here.
+    </p>
+    <p>
+        To force changes to appear, look for the table containing the updated data (look at the number of 
+        <em>pending changes</em> for a hint). Once you have identified the table, fire up SQL Server 
+        Management Studio, right-click on the table, select Full-text Index, then Apply Tracked Changes.
+    </p>
+    <p>
+        If there are no <em>pending changes</em> but you expect there to be some, check that <em>change
+        tracking</em> is enabled. You can enable this in SQL Server Management Studio, right-click on the
+        table, select Full-text Index, then Properties. Set <em>Change Tracking</em> to <em>Manual</em> to 
+        keep track of changes, but don't automatically update the catalog. While you're there schedule it 
+        so it runs automatically. Lastly, force a repopulation of the catalog for this table so you can use it 
+        now.
+    </p>
+    <p>
+        To make things 'instantly' appear in the catalog, you need to set <em>Change Tracking</em> to 
+        <em>Automatic</em>. Beware there may be performance implications associated with this option; it is
+        not selected in a default CW install, except for the KB_Resolution table. This option is reflected
+        below as the <em>Background Update Enabled</em> property.
+    </p>
+    {% if CatalogStatus %}
+    <div class="catalog">
+        <h2>Full text catalog - {{ CatalogStatus.Catalog }}</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="property-name">Index Size (MB)</td>
+                    <td class="property-value">{{ CatalogStatus.IndexSize }}</td>
+                </tr>
+                <tr>
+                    <td class="property-name">Item Count</td>
+                    <td class="property-value">{{ CatalogStatus.ItemCount }}</td>
+                </tr>
+                <tr>
+                    <td class="property-name">Last Populated</td>
+                    <td class="property-value">{{ CatalogStatus.LastPopulated.ToString }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="error"><strong>Could not retrieve catalog metadata. Check that the cwkb user has the VIEW DEFINITION permission.</strong></p>
+    {% endif %}
+
+    {% if KB_Resolution %}
+    {% with KB_Resolution as TableStatus %}
+    {% include "templates/tablestatus.include.html" %}
+    {% endwith %}
+    {% else %}
+    <p class="error"><strong>Could not retrieve KB_Resolution metadata. Check that the cwkb user has the VIEW DEFINITION permission.</strong></p>
+    {% endif %}
+
+    {% if SR_Service %}
+    {% with SR_Service as TableStatus %}
+    {% include "templates/tablestatus.include.html" %}
+    {% endwith %}
+    {% else %}
+    <p class="error"><strong>Could not retrieve SR_Service metadata. Check that the cwkb user has the VIEW DEFINITION permission.</strong></p>
+    {% endif %}
+
+    {% if SR_Detail %}
+    {% with SR_Detail as TableStatus %}
+    {% include "templates/tablestatus.include.html" %}
+    {% endwith %}
+    {% else %}
+    <p class="error"><strong>Could not retrieve SR_Detail metadata. Check that the cwkb user has the VIEW DEFINITION permission.</strong></p>
+    {% endif %}
+
+    {% if Time_Entry %}
+    {% with Time_Entry as TableStatus %}
+    {% include "templates/tablestatus.include.html" %}
+    {% endwith %}
+    {% else %}
+    <p class="error"><strong>Could not retrieve Time_Entry metadata. Check that the cwkb user has the VIEW DEFINITION permission.</strong></p>
+    {% endif %}
+</body>
+</html>

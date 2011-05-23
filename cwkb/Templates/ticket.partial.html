@@ -1,0 +1,61 @@
+﻿<div class="ticket">
+    {% include "templates/ticketheader.include.html" %}
+    <div class="ticket-notes">
+        {% for pn in Ticket.ProblemNotes %}
+        {% if pn.Note %}
+        <div class="ticket-note">
+            {% autoescape off %}
+            {{ pn.Note|force_escape|urlize|linebreaks }}
+            {% endautoescape %}
+        </div>
+        <h6><strong>{{ pn.LastUpdatedBy }}</strong> on <strong>{{ pn.LastUpdated.ToString }}</strong></h6>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% if Ticket.InternalAnalysisNotes %}
+    <div class="ticket-notes">
+        <h4>Internal Analysis</h4>
+        {% for pn in Ticket.InternalAnalysisNotes %}
+        {% if pn.Note %}
+        {% autoescape off %}
+        {{ pn.Note|force_escape|urlize|linebreaks }}
+        {% endautoescape %}
+        <h6><strong>{{ pn.LastUpdatedBy }}</strong> on <strong>{{ pn.LastUpdated.ToString }}</strong></h6>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if Ticket.ResolutionNotes %}
+    <div class="ticket-notes">
+        <h4>Resolution</h4>
+        {% for pn in Ticket.ResolutionNotes %}
+        {% if pn.Note %}
+        {% autoescape off %}
+        {{ pn.Note|force_escape|urlize|linebreaks }}
+        {% endautoescape %}
+        <h6><strong>{{ pn.LastUpdatedBy }}</strong> on <strong>{{ pn.LastUpdated.ToString }}</strong></h6>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% for TimeEntry in Ticket.TimeEntries %}
+{% include "templates/timeentry.include.html" %}
+{% endfor %}
+
+<script type="text/javascript">
+    $(".timeentry").each(function (index) {
+        var expand = false;
+        {% if JumpToTimeEntryId %}
+        if ($(this).attr("id") == "timeentry-{{ JumpToTimeEntryId }}")
+        {
+            expand = true;
+            // TODO: not sure if we should scroll to that point
+            //$(this).offsetParent().scrollTop($(this).position().top);
+        }
+        {% endif %}
+        makeCollapsible($(this).children("h1").get(0), $(this).children(".timeentry-int").get(0),
+                        "/Images/expand-button.png", "/Images/collapse-button.png", expand);
+    });
+</script>

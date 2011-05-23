@@ -1,0 +1,19 @@
+﻿<div id="timeentry-{{ TimeEntry.Id }}" class="timeentry">
+    <h1>
+        <strong>{{ TimeEntry.Member }}</strong> on <strong>{{ TimeEntry.StartTime.ToShortDateString }}</strong> 
+        from <strong>{{ TimeEntry.StartTime.ToShortTimeString }}</strong>
+        to <strong>{{ TimeEntry.EndTime.ToShortTimeString }}</strong>
+    </h1>
+    <div class="timeentry-int">
+        {% autoescape off %}
+        {{ TimeEntry.Notes|force_escape|urlize|linebreaks }}
+        {% endautoescape %}
+
+        {% if TimeEntry.InternalNotes %}
+        <h2>Internal Notes</h2>
+        {% autoescape off %}
+        {{ TimeEntry.InternalNotes|force_escape|urlize|linebreaks }}
+        {% endautoescape %}
+        {% endif %}
+    </div>
+</div>

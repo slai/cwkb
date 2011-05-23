@@ -1,0 +1,37 @@
+﻿<form id="search-big-form" method="get" action="/search">
+    <div>
+        <label for="search-big-form-q">Enter some keywords to search for:</label>
+        <input type="text" id="search-big-form-q" name="q" />
+    </div>
+    <div class="form-buttons">
+        <input type="submit" name="submit" value="Search" />
+    </div>
+</form>
+<div class="search-tips">
+    <p>
+        By default, results containing <em>all</em> of the words specified will be returned.
+    </p>
+    <p>
+        For results containing any word, insert the <em>OR</em> operator between the words, e.g. desktop <em>OR</em> laptop.
+    </p>
+    <p>
+        The <em>NOT</em> operator can also be used to exclude words from the search, e.g. desktop <em>NOT</em> lenovo.
+    </p>
+    <p>
+        Phrases can be specified by containing them in double quotation marks.
+    </p>
+    {% if KBLastUpdateDate %}
+    <p class="kb-last-update">
+        The knowledge base was last indexed on: <strong>{{ KBLastUpdateDate.ToString }}</strong>
+    </p>
+    {% endif %}
+    <p class="debug-link"><a href="/debug" target="_blank">Not finding something you expected to find?</a></p>
+</div>
+
+<script type="text/javascript">
+    $("#search-big-form").submit(function () {
+        var form = $("#search-big-form");
+        loadIntoLHS(form.attr("action") + "?" + form.serialize());
+        return false;
+    });
+</script>

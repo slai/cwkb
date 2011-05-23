@@ -1,0 +1,24 @@
+﻿body 
+{
+    font-family: Arial, Sans-Serif;
+}
+
+.header-cw
+{
+    color: #999999;
+}
+
+.property-name
+{
+    padding-right: 1em;
+}
+
+.property-value
+{
+    font-weight: bold;
+}
+
+.error
+{
+    color: Red;
+}

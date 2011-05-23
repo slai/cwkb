@@ -1,0 +1,12 @@
+﻿{% if TimeEntry.Ticket %}
+<div class="ticket">
+    {% with TimeEntry.Ticket as Ticket %}
+    {% include "templates/ticketheader.include.html" %}
+    {% endwith %}
+</div>
+<div class="view-in-context">
+    <a href="#" onclick="loadIntoRHS('/ticket/{{ TimeEntry.Ticket.Id }}?te={{ TimeEntry.Id }}'); return false;">View this time entry in the context of related ticket</a>
+</div>
+{% endif %}
+
+{% include "templates/timeentry.include.html" %}

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ConnectWise KB Viewer</title>
+    <link rel="Stylesheet" media="all" href="/styles/main.css" />
+    <script type="text/javascript" src="/scripts/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="/scripts/Hash.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.hash.js"></script>
+    <script type="text/javascript" src="/scripts/main.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // the url is for emulated IE6/7 support. Points to a non-existent page.
+            $.hash.init("/wormhole");
+
+            // trigger the initial page by mimicking a hash change
+            if (window.location.hash == "")
+                $.hash.go("l=/search");
+        });
+
+        $(document).hashchange(function (e, newHash) {
+            var hashMap = parseHash(window.location.hash);
+
+            // LHS
+            var url = hashMap["l"];
+            // ensure url to load isn't to another domain
+            //console.log("lEXISTING: [" + curDivUrls["content-lhs"] + "], NEW [" + url + "]");
+            if (url != undefined && url[0] == "/" && curDivUrls["content-lhs"] != url) {
+                loadIntoLHS(unescape(url));
+            }
+
+            // RHS
+            url = hashMap["r"];
+            // ensure url to load isn't to another domain
+            //console.log("rEXISTING: [" + curDivUrls["content-rhs"] + "], NEW [" + url + "]");
+            if (url == undefined) {
+                hideRHS();
+            }
+            else if (/* url != undefined && */ url[0] == "/" && curDivUrls["content-rhs"] != url) {
+                loadIntoRHS(url);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="header">
+        <h1><span class="header-cw">cw</span>kb.</h1>
+        <div id="hide-rhs">
+            <a href="#" onclick="hideRHS(); return false;">Hide detail pane</a>
+        </div>
+    </div>
+    <div id="content-lhs" class="content-box"></div>
+    <div id="content-rhs" class="content-box"></div>
+</body>
+</html>

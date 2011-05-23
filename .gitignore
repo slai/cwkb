@@ -1,5 +1,6 @@
 *.docstates
 *.suo
+*.vs10x
 *.exe
 bin/
 obj/

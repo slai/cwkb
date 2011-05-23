@@ -14,7 +14,6 @@ namespace cwkb
             Get["/"] = HandleErrors(x =>
             {
                 var context = new Dictionary<string, object>();
-                context["Title"] = "hello world!";
 
                 return RenderTemplate("templates/index.html", context);
             });
